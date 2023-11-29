@@ -6,7 +6,7 @@
     android:layout_margin="20dp"
     android:elevation="8dp"
     android:id="@+id/item_post_card_view"
-    app:cardCornerRadius="8dp">
+    app:cardCornerRadius="12dp">
 
    <RelativeLayout
        android:layout_width="match_parent"
@@ -17,7 +17,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:id="@+id/item_post_title"
-           android:text="@string/post_title"
+           android:text=""
            android:textSize="24sp"
            android:textStyle="bold"
            style="@style/TextAppearance.AppCompat.Medium"/>
@@ -26,7 +26,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:id="@+id/item_post_description"
-           android:text="@string/post_description_main"
+           android:text=""
            android:textSize="16sp"
            android:textStyle="normal"
            style="@style/TextAppearance.AppCompat.Medium"
@@ -58,8 +58,8 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:id="@+id/item_post_up_vote_txt"
-                   android:text="@string/up_vote_count"
-                   android:textSize="24sp"
+                   android:text=""
+                   android:textSize="20sp"
                    android:textColor="@color/grey"
                    android:textStyle="bold"
                    style="@style/TextAppearance.AppCompat.Medium"
@@ -83,8 +83,8 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:id="@+id/item_post_down_vote_txt"
-                   android:text="@string/down_vote_count"
-                   android:textSize="24sp"
+                   android:text=""
+                   android:textSize="20sp"
                    style="@style/TextAppearance.AppCompat.Medium"
                    android:layout_gravity="center"
                    android:textColor="@color/grey"
@@ -97,18 +97,14 @@
        <Button
            android:id="@+id/item_post_btn_read_more"
            android:layout_width="150dp"
-           android:layout_height="40dp"
+           android:layout_height="38dp"
            android:layout_below="@id/item_post_description"
-           android:layout_alignBaseline="@id/item_post_btn_line_1"
            android:layout_alignParentEnd="true"
-           android:layout_centerInParent="true"
+           android:background="@drawable/drawable_background_button_blue_fill"
            android:layout_marginTop="12dp"
-           android:gravity="center"
            android:text="@string/read_more"
-           android:layout_centerHorizontal="true"
            android:textAllCaps="true"
-           android:background="@drawable/drawable_background_button_blue_fill"/>
-
+           android:textSize="12sp"/>
    </RelativeLayout>
 
 
