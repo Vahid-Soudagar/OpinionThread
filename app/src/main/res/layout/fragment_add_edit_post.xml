@@ -110,8 +110,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/submit"
+            android:id="@+id/fragment_add_edit_btn_submit"
             android:textAllCaps="true"
             android:layout_marginTop="25dp"
+            android:background="@drawable/drawable_background_button_blue_fill"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragment_add_edit_btn_save_changes"
+            android:text="@string/save_changes"
+            android:textAllCaps="true"
+            android:layout_marginTop="25dp"
+            android:visibility="gone"
             android:background="@drawable/drawable_background_button_blue_fill"/>
         
         

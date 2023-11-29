@@ -13,6 +13,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.opinionthread.R;
 import com.example.opinionthread.models.Post;
@@ -20,6 +23,7 @@ import com.example.opinionthread.ui.AddEditPostFragment;
 import com.example.opinionthread.ui.ViewPostFragment;
 
 import java.util.List;
+import java.util.Objects;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
@@ -46,17 +50,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.upVoteCount.setText(String.valueOf(currentPost.getUpvoteCount()));
         holder.downVoteCount.setText(String.valueOf(currentPost.getDownVoteCount()));
 
-
+        NavController navController = Navigation.findNavController((AppCompatActivity) context, R.id.navHostFragment);
         holder.btnReadMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Assuming you have access to the FragmentManager in the context
-                FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
-
-                // Replace the current fragment with AddEditPostFragment
-                fragmentManager.beginTransaction()
-                        .replace(R.id.main_activity, new ViewPostFragment())
-                        .commit();
+                navController.navigate(R.id.action_homeFragment_to_viewPostFragment);
             }
         });
 

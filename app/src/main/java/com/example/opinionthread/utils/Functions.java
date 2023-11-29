@@ -1,5 +1,13 @@
 package com.example.opinionthread.utils;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.example.opinionthread.R;
 import com.example.opinionthread.models.Post;
 
 import java.util.ArrayList;
@@ -23,5 +31,40 @@ public class Functions {
             postList.add(post);
         }
         return postList;
+    }
+
+    public static void showPopUp(Context context, View.OnClickListener onClickListener) {
+        View dialog = LayoutInflater.from(context).inflate(R.layout.layout_dialog, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(dialog);
+
+        LinearLayout editButton = dialog.findViewById(R.id.item_post_btn_edit_view);
+        LinearLayout deleteButton = dialog.findViewById(R.id.item_post_btn_delete_view);
+
+        AlertDialog alertDialog = builder.create();
+
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onClickListener != null) {
+                    onClickListener.onClick(v);
+                }
+                alertDialog.dismiss();
+            }
+        });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle the "Cancel" button click
+                // Dismiss the dialog
+                alertDialog.dismiss();
+            }
+        });
+
+        // Show the dialog
+        alertDialog.show();
+
     }
 }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:mlns="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.HomeFragment">
+
+    <include layout="@layout/layout_tool_bar"
+        android:id="@+id/fragment_home_toolbar"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:listitem="@layout/item_post"
+    android:layout_below="@id/fragment_home_toolbar">
+
+</androidx.recyclerview.widget.RecyclerView>
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/floatingActionButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="26dp"
+    android:layout_marginBottom="26dp"
+    android:clickable="true"
+    android:src="@android:drawable/ic_input_add"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentEnd="true"
+    android:background="@drawable/drawable_background_button_blue_fill"
+    android:contentDescription="@string/app_name" />
+
+</RelativeLayout>

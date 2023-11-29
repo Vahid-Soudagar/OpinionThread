@@ -1,285 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.ViewPostFragment">
 
-    <RelativeLayout
+
+    <include layout="@layout/layout_tool_bar"
+        android:id="@+id/fragment_view_post_toolbar"
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content" />
 
-        <include layout="@layout/layout_tool_bar"
-            android:id="@+id/fragment_view_post_toolbar"
-            android:layout_alignParentTop="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_vie_post_line_1"
+        android:layout_below="@id/fragment_view_post_toolbar"
+        android:layout_margin="40dp"
+        android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/fragment_add_edit_lin_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/fragment_vie_post_line_1"
-            android:layout_below="@id/fragment_view_post_toolbar"
-            android:layout_margin="40dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/fragment_add_edit_lin_2"
+            <TextView
+                android:id="@+id/fragment_view_post_title_heading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="@string/post_title"
+                android:textSize="18sp"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp" />
+
+            <TextView
+                android:id="@+id/fragment_view_post_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="@string/post_title"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragment_add_edit_lin_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fragment_view_post_description_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:textSize="18sp"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp" />
+
+            <TextView
+                android:id="@+id/fragment_view_post_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="@string/post_title"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragment_add_edit_lin_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fragment_view_post_author_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/author"
+                android:textSize="18sp"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp" />
+
+            <TextView
+                android:id="@+id/fragment_view_post_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="@string/author"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragment_add_edit_lin_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fragment_view_post_date_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/date"
+                android:textSize="18sp"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp" />
+
+            <TextView
+                android:id="@+id/fragment_view_post_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="12th Jan 2020"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_post_btn_line_1"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginEnd="25dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/item_post_up_vote_img"
+                    android:src="@drawable/ic_upvote"
+                    android:padding="8dp"/>
 
                 <TextView
-                    android:id="@+id/fragment_view_post_title_heading"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/post_title"
-                    android:textSize="18sp"
-                    style="@style/TextAppearance.AppCompat.Medium"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp" />
-
-                <TextView
-                    android:id="@+id/fragment_view_post_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/post_title"
+                    android:id="@+id/item_post_up_vote_txt"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:textColor="@color/grey"
                     android:textStyle="bold"
-                    android:textSize="22sp"
                     style="@style/TextAppearance.AppCompat.Medium"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/fragment_add_edit_lin_3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/fragment_view_post_description_heading"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/description"
-                    android:textSize="18sp"
-                    style="@style/TextAppearance.AppCompat.Medium"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp" />
-
-                <TextView
-                    android:id="@+id/fragment_view_post_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/post_title"
-                    android:textStyle="normal"
-                    android:textSize="18sp"
-                    style="@style/TextAppearance.AppCompat.Medium"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/fragment_add_edit_lin_4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/fragment_view_post_author_heading"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/author"
-                    android:textSize="18sp"
-                    style="@style/TextAppearance.AppCompat.Medium"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp" />
-
-                <TextView
-                    android:id="@+id/fragment_view_post_author"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="@string/author"
-                    android:textStyle="bold"
-                    android:textSize="22sp"
-                    style="@style/TextAppearance.AppCompat.Medium"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/fragment_add_edit_lin_5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/fragment_view_post_date_heading"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/date"
-                    android:textSize="18sp"
-                    style="@style/TextAppearance.AppCompat.Medium"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp" />
-
-                <TextView
-                    android:id="@+id/fragment_view_post_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="12th Jan 2020"
-                    android:textStyle="bold"
-                    android:textSize="22sp"
-                    style="@style/TextAppearance.AppCompat.Medium"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp" />
-
+                    android:layout_gravity="center"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/item_post_btn_line_1"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginEnd="25dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/item_post_up_vote_img"
-                        android:src="@drawable/ic_upvote"
-                        android:padding="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/item_post_up_vote_txt"
-                        android:text=""
-                        android:textSize="20sp"
-                        android:textColor="@color/grey"
-                        android:textStyle="bold"
-                        style="@style/TextAppearance.AppCompat.Medium"
-                        android:layout_gravity="center"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/item_post_down_vote_img"
-                        android:src="@drawable/ic_downvote"
-                        android:padding="8dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/item_post_down_vote_txt"
-                        android:text=""
-                        android:textSize="20sp"
-                        style="@style/TextAppearance.AppCompat.Medium"
-                        android:layout_gravity="center"
-                        android:textColor="@color/grey"
-                        android:textStyle="bold"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_alignStart="@id/fragment_vie_post_line_1"
-            android:layout_alignEnd="@id/fragment_vie_post_line_1"
-            android:layout_below="@id/fragment_vie_post_line_1">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/item_post_btn_edit_view"
-                android:background="@drawable/drawable_background_btn_blue_stroke"
-                android:padding="8dp"
-                android:layout_weight="1"
-                android:layout_marginEnd="10dp"
-                android:gravity="center">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/item_post_edit_img"
-                    android:src="@drawable/ic_edit"
+                    android:id="@+id/item_post_down_vote_img"
+                    android:src="@drawable/ic_downvote"
                     android:padding="8dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="EDIT"
+                    android:id="@+id/item_post_down_vote_txt"
+                    android:text=""
                     android:textSize="20sp"
                     style="@style/TextAppearance.AppCompat.Medium"
                     android:layout_gravity="center"
-                    android:textColor="@color/blue"
+                    android:textColor="@color/grey"
                     android:textStyle="bold"/>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignStart="@id/fragment_vie_post_line_1"
+        android:layout_alignEnd="@id/fragment_vie_post_line_1"
+        android:layout_below="@id/fragment_vie_post_line_1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/item_post_btn_edit_view"
+            android:background="@drawable/drawable_background_btn_blue_stroke"
+            android:padding="8dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/item_post_btn_delete_view"
-                android:background="@drawable/drawable_background_btn_red_stroke"
+                android:id="@+id/item_post_edit_img"
+                android:src="@drawable/ic_edit"
+                android:padding="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EDIT"
+                android:textSize="20sp"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_gravity="center"
+                android:textColor="@color/blue"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/item_post_btn_delete_view"
+            android:background="@drawable/drawable_background_btn_red_stroke"
+            android:padding="8dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_post_delete_img"
+                android:src="@drawable/ic_delete"
                 android:padding="8dp"
-                android:layout_weight="1"
-                android:gravity="center">
+                android:layout_gravity="center"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/item_post_delete_img"
-                    android:src="@drawable/ic_delete"
-                    android:padding="8dp"
-                    android:layout_gravity="center"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="DELETE"
-                    android:textSize="20sp"
-                    style="@style/TextAppearance.AppCompat.Medium"
-                    android:layout_gravity="center"
-                    android:textColor="@color/red"
-                    android:textStyle="bold"
-                    android:gravity="center"/>
-
-            </LinearLayout>
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DELETE"
+                android:textSize="20sp"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_gravity="center"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:gravity="center"/>
 
         </LinearLayout>
 
 
-
-    </RelativeLayout>
-
-
-</FrameLayout>
+    </LinearLayout>
+</RelativeLayout>
