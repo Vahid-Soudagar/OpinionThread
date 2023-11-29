@@ -1,13 +1,7 @@
 <resources>
-    <string name="app_name">OpinionThread</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="app_name">OpinionThread</string>>
 
-    <string name="lorem_ipsum">
+    <string name="post_description_main">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
         dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
@@ -43,4 +37,22 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    
+    <string name="post_title">Post Title</string>
+    <string name="up_vote_count">10</string>
+    <string name="down_vote_count">6</string>
+    <string name="read_more">Read More</string>
+    <string name="description">Description</string>
+    <string name="author">Author</string>
+    <string name="submit">Submit</string>
+    <string name="date">Date</string>
+    <string name="edit">edit</string>
+    <string name="delete">Delete</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="are_you_sure_1">Are you sure? you want to delete the post</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+
+    
 </resources>

@@ -6,4 +6,11 @@
     </style>
 
     <style name="Theme.OpinionThread" parent="Base.Theme.OpinionThread" />
+
+    <resources>
+        <style name="BlueButtonStyle">
+            <item name="android:background">@drawable/drawable_background_button_blue_fill</item>
+        </style>
+    </resources>
+
 </resources>
