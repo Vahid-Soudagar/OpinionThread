@@ -35,8 +35,16 @@ public class PostRepository {
         postDao.delete(post);
     }
 
-    public void update(Post post) {
-        postDao.update(post.getId(), post.getTitle(), post.getDescription(), post.getAuthor());
+    public void update(int id, String title, String description, String author, String date) {
+        postDao.update(id, title, description, author, date);
+    }
+
+    public void updateUpVoteCount(int id, int upVoteCount) {
+        postDao.updateUpVoteCount(id, upVoteCount);
+    }
+
+    public void updateDownVoteCount(int id, int downVoteCount) {
+        postDao.updateDownVoteCount(id, downVoteCount);
     }
 
 }

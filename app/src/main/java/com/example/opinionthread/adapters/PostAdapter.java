@@ -2,6 +2,7 @@ package com.example.opinionthread.adapters;
 
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +13,16 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.opinionthread.R;
 import com.example.opinionthread.models.Post;
+import com.example.opinionthread.models.PostViewModel;
 import com.example.opinionthread.ui.AddEditPostFragment;
 import com.example.opinionthread.ui.ViewPostFragment;
 
@@ -30,9 +34,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     private Context context;
     private List<Post> postList;
 
-    public PostAdapter(Context context, List<Post> postList) {
+    private PostItemClickListener postItemClickListener;
+
+    public PostAdapter(Context context, List<Post> postList, PostItemClickListener postItemClickListener) {
         this.context = context;
         this.postList = postList;
+        this.postItemClickListener = postItemClickListener;
     }
 
     @NonNull
@@ -50,13 +57,30 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.upVoteCount.setText(String.valueOf(currentPost.getUpvoteCount()));
         holder.downVoteCount.setText(String.valueOf(currentPost.getDownVoteCount()));
 
-        NavController navController = Navigation.findNavController((AppCompatActivity) context, R.id.navHostFragment);
+
+
         holder.btnReadMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navController.navigate(R.id.action_homeFragment_to_viewPostFragment);
+                postItemClickListener.onItemClick(postList.get(holder.getAdapterPosition()));
             }
         });
+
+        holder.upVoteImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                postItemClickListener.onUpVoteClick(postList.get(holder.getAdapterPosition()));
+            }
+        });
+
+        holder.downVoteImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                postItemClickListener.onDownVoteClick(postList.get(holder.getAdapterPosition()));
+            }
+        });
+
+
 
     }
 
@@ -76,6 +100,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         TextView title, description, upVoteCount, downVoteCount;
         ImageView upVoteImage, downVoteImage;
         Button btnReadMore;
+        CardView layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,7 +112,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             upVoteImage = (ImageView) itemView.findViewById(R.id.item_post_up_vote_img);
             downVoteImage = (ImageView) itemView.findViewById(R.id.item_post_down_vote_img);
             btnReadMore = (Button) itemView.findViewById(R.id.item_post_btn_read_more);
+            layout = (CardView) itemView.findViewById(R.id.item_post_card_view);
 
         }
+    }
+
+    public interface PostItemClickListener {
+        void onItemClick(Post post);
+        void onUpVoteClick(Post post);
+        void onDownVoteClick(Post post);
     }
 }

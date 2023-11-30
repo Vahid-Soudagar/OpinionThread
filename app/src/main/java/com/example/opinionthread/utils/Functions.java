@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.opinionthread.R;
 import com.example.opinionthread.models.Post;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -65,6 +66,10 @@ public class Functions {
 
         // Show the dialog
         alertDialog.show();
+    }
 
+    public static String generateDate() {
+        String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        return date;
     }
 }

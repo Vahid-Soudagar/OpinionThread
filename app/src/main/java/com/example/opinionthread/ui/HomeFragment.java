@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements PostAdapter.PostItemClickListener {
 
     public HomeFragment() {
         // Required empty public constructor
@@ -39,6 +39,7 @@ public class HomeFragment extends Fragment {
     private PostAdapter postAdapter;
     private NavController navController;
     private PostViewModel postViewModel;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,17 +51,11 @@ public class HomeFragment extends Fragment {
         postViewModel = new ViewModelProvider(this).get(PostViewModel.class);
         navController = NavHostFragment.findNavController(this);
 
-        Database database = Database.getDb(getContext());
-        List<Post> list = Functions.fillData();
-        for (Post post : list) {
-            database.postDao().insert(post);
-        }
 
 
         postViewModel.getGetAllPost().observe(getViewLifecycleOwner(), new Observer<List<Post>>() {
             @Override
             public void onChanged(List<Post> posts) {
-                Toast.makeText(getContext(), posts.size()+" ", Toast.LENGTH_SHORT).show();
                 postAdapter.updatePostList(posts);
             }
         });
@@ -74,7 +69,7 @@ public class HomeFragment extends Fragment {
         binding.fragmentHomeToolbar.fragmentAddEditHome.setVisibility(View.GONE);
 
         postList = new ArrayList<>();
-        postAdapter = new PostAdapter(getContext(), postList);
+        postAdapter = new PostAdapter(getContext(), postList, this);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recyclerView.setAdapter(postAdapter);
         binding.recyclerView.setHasFixedSize(true);
@@ -85,9 +80,25 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("sourceFragment", "HomeFragment");
                 navController.navigate(R.id.action_homeFragment_to_addEditPostFragment, bundle);
             }
         });
+    }
+
+    @Override
+    public void onItemClick(Post post) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("currentPost", post);
+        navController.navigate(R.id.action_homeFragment_to_viewPostFragment, bundle);
+    }
+
+    @Override
+    public void onUpVoteClick(Post post) {
+        postViewModel.updateUpVoteCount(post.getId(), post.getUpvoteCount()+1);
+    }
+
+    @Override
+    public void onDownVoteClick(Post post) {
+        postViewModel.updateDownVoteCount(post.getId(),post.getDownVoteCount() + 1);
     }
 }

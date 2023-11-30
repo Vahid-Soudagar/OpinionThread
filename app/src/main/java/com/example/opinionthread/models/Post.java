@@ -5,10 +5,13 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.Date;
 
+
 @Entity(tableName = "post")
-public class Post {
+public class Post implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -29,6 +32,8 @@ public class Post {
     public Post() {
     }
 
+    @Ignore
+
     public Post(int id, String title, String description, String author, int upvoteCount, int downVoteCount, String date) {
         this.id = id;
         this.title = title;
@@ -38,6 +43,16 @@ public class Post {
         this.downVoteCount = downVoteCount;
         this.date = date;
     }
+
+    public Post(String title, String description, String author, int upvoteCount, int downVoteCount, String date) {
+        this.title = title;
+        this.description = description;
+        this.author = author;
+        this.upvoteCount = upvoteCount;
+        this.downVoteCount = downVoteCount;
+        this.date = date;
+    }
+
 
     public int getId() {
         return id;
