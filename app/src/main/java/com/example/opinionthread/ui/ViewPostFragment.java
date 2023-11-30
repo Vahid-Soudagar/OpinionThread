@@ -9,7 +9,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 import com.example.opinionthread.R;
 import com.example.opinionthread.databinding.FragmentViewPostBinding;
 import com.example.opinionthread.models.Post;
