@@ -3,18 +3,17 @@ package com.example.opinionthread.ui;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import android.widget.Toolbar;
-
 import com.example.opinionthread.R;
 import com.example.opinionthread.databinding.FragmentViewPostBinding;
 import com.example.opinionthread.models.Post;
+import com.example.opinionthread.models.PostViewModel;
 import com.example.opinionthread.utils.Functions;
 
 public class ViewPostFragment extends Fragment {
@@ -74,12 +73,15 @@ public class ViewPostFragment extends Fragment {
                 Functions.showPopUp(getContext(), new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getContext(), "Deleted successfully", Toast.LENGTH_SHORT).show();
+                        PostViewModel postViewModel = new ViewModelProvider(ViewPostFragment.this).get(PostViewModel.class);
+                        postViewModel.delete(currentPost);
                         navController.navigate(R.id.action_viewPostFragment_to_homeFragment2);
                     }
                 });
             }
         });
+
+
     }
 
     private void populateView(Post post) {

@@ -1,10 +1,7 @@
 package com.example.opinionthread.repository;
 
 import android.app.Application;
-import android.os.AsyncTask;
-
 import androidx.lifecycle.LiveData;
-
 import com.example.opinionthread.database.Dao.PostDao;
 import com.example.opinionthread.database.Database;
 import com.example.opinionthread.models.Post;

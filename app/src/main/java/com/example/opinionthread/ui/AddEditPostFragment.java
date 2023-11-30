@@ -1,30 +1,22 @@
 package com.example.opinionthread.ui;
 
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-
 import com.example.opinionthread.R;
 import com.example.opinionthread.databinding.FragmentAddEditPostBinding;
-import com.example.opinionthread.databinding.LayoutToolBarBinding;
 import com.example.opinionthread.models.Post;
 import com.example.opinionthread.models.PostViewModel;
 import com.example.opinionthread.utils.Functions;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class AddEditPostFragment extends Fragment {
 
@@ -85,7 +77,7 @@ public class AddEditPostFragment extends Fragment {
         }
     }
 
-    private void addNote() {
+    private boolean addNote() {
         String title = binding.fragmentAddEditPostTitleView.getText().toString();
         String description = binding.fragmentAddEditPostDescriptionView.getText().toString();
         String author = binding.fragmentAddEditPostAuthorView.getText().toString();
@@ -96,6 +88,9 @@ public class AddEditPostFragment extends Fragment {
             String date = Functions.generateDate();
             newPost = new Post(title, description, author, upVoteCount, downVotwCount, date);
             postViewModel.insert(newPost);
+            return true;
+        } else {
+            return false;
         }
     }
     private void initView() {
@@ -111,8 +106,11 @@ public class AddEditPostFragment extends Fragment {
         binding.fragmentAddEditBtnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addNote();
-                navController.navigate(R.id.action_addEditPostFragment_to_homeFragment);
+                if (addNote()) {
+                    navController.navigate(R.id.action_addEditPostFragment_to_homeFragment);
+                } else {
+                    Toast.makeText(getContext(), "Please Enter Something", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

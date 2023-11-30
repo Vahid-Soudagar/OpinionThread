@@ -5,15 +5,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-
 import com.example.opinionthread.R;
 import com.example.opinionthread.models.Post;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Functions {
 
@@ -69,7 +67,8 @@ public class Functions {
     }
 
     public static String generateDate() {
-        String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
+        String date = dateFormat.format(new Date());
         return date;
     }
 }

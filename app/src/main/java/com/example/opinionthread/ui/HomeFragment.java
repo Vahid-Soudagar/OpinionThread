@@ -1,6 +1,6 @@
 package com.example.opinionthread.ui;
 
-import static androidx.navigation.fragment.FragmentKt.findNavController;
+
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -9,22 +9,15 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.example.opinionthread.R;
 import com.example.opinionthread.adapters.PostAdapter;
-import com.example.opinionthread.database.Database;
 import com.example.opinionthread.databinding.FragmentHomeBinding;
 import com.example.opinionthread.models.Post;
 import com.example.opinionthread.models.PostViewModel;
-import com.example.opinionthread.utils.Functions;
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class HomeFragment extends Fragment implements PostAdapter.PostItemClickListener {
