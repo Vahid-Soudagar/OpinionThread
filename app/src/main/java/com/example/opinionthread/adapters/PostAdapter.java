@@ -65,6 +65,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         return postList.size();
     }
 
+    public void updatePostList(List<Post> posts) {
+        postList.clear();
+        postList.addAll(posts);
+        notifyDataSetChanged();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView title, description, upVoteCount, downVoteCount;

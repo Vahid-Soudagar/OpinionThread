@@ -1,21 +1,35 @@
 package com.example.opinionthread.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.util.Date;
 
+@Entity(tableName = "post")
 public class Post {
 
+    @PrimaryKey(autoGenerate = true)
     private int id;
+    @ColumnInfo(name = "title")
     private String title;
+    @ColumnInfo(name = "description")
     private String description;
+    @ColumnInfo(name = "author")
     private String author;
+    @ColumnInfo(name = "upvotecount")
     private int upvoteCount;
+    @ColumnInfo(name = "downvotecount")
     private int downVoteCount;
-    private Date date;
+    @ColumnInfo(name = "date")
+    private String date;
 
+    @Ignore
     public Post() {
     }
 
-    public Post(int id, String title, String description, String author, int upvoteCount, int downVoteCount, Date date) {
+    public Post(int id, String title, String description, String author, int upvoteCount, int downVoteCount, String date) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -73,11 +87,11 @@ public class Post {
         this.downVoteCount = downVoteCount;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

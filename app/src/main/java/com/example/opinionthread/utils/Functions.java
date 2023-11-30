@@ -26,7 +26,7 @@ public class Functions {
                     "Author " + i, // author
                     i * 10, // upvoteCount
                     i * 5, // downVoteCount
-                    new Date() // date (you might want to set a specific date here)
+                    "12th Nov 2001" // date (you might want to set a specific date here)
             );
             postList.add(post);
         }
