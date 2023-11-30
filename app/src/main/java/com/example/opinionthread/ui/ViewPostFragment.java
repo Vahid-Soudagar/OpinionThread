@@ -36,6 +36,13 @@ public class ViewPostFragment extends Fragment {
 
         binding.fragmentViewPostToolbar.fragmentAddEditPost.setText(getString(R.string.view_post));
 
+//        toolbar
+        binding.fragmentViewPostToolbar.fragmentAddEditHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_viewPostFragment_to_homeFragment2);
+            }
+        });
 
 //        edit
         binding.itemPostBtnEditView.setOnClickListener(new View.OnClickListener() {
