@@ -1,7 +1,5 @@
 package com.example.opinionthread.utils;
 
-import static java.security.AccessController.getContext;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
