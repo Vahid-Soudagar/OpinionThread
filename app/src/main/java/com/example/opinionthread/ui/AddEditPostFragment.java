@@ -47,7 +47,6 @@ public class AddEditPostFragment extends Fragment {
                 changeToEdit(isEdit);
                 currentPost = (Post) bundle.getSerializable("post");
                 populateView(currentPost);
-                Toast.makeText(getContext(), currentPost.getTitle(), Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -56,14 +55,17 @@ public class AddEditPostFragment extends Fragment {
         return view;
     }
 
-    private void updateNote(int id) {
+    private boolean updateNote(int id) {
         String title = binding.fragmentAddEditPostTitleView.getText().toString();
         String description = binding.fragmentAddEditPostDescriptionView.getText().toString();
         String author = binding.fragmentAddEditPostAuthorView.getText().toString();
         String date = Functions.generateDate();
-
-        if (!title.isEmpty() && !description.isEmpty() && !author.isEmpty()) {
+        boolean isValid = Functions.validateForm(getContext(), title, description, author);
+        if (isValid && !date.isEmpty()) {
             postViewModel.update(id, title, description, author, date);
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -81,18 +83,19 @@ public class AddEditPostFragment extends Fragment {
         String title = binding.fragmentAddEditPostTitleView.getText().toString();
         String description = binding.fragmentAddEditPostDescriptionView.getText().toString();
         String author = binding.fragmentAddEditPostAuthorView.getText().toString();
-
-        if (!title.isEmpty() && !description.isEmpty() && !author.isEmpty()) {
+        boolean isValid = Functions.validateForm(getContext(), title, description, author);
+        if (isValid) {
             int upVoteCount = 0;
-            int downVotwCount = 0;
+            int downVoteCount = 0;
             String date = Functions.generateDate();
-            newPost = new Post(title, description, author, upVoteCount, downVotwCount, date);
+            newPost = new Post(title, description, author, upVoteCount, downVoteCount, date);
             postViewModel.insert(newPost);
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
+
     private void initView() {
         TextView postTextView = binding.fragmentAddEditToolBar.fragmentAddEditPost;
         postTextView.setText(getString(R.string.create_post));
@@ -108,8 +111,6 @@ public class AddEditPostFragment extends Fragment {
             public void onClick(View view) {
                 if (addNote()) {
                     navController.navigate(R.id.action_addEditPostFragment_to_homeFragment);
-                } else {
-                    Toast.makeText(getContext(), "Please Enter Something", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -117,8 +118,9 @@ public class AddEditPostFragment extends Fragment {
         binding.fragmentAddEditBtnSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateNote(currentPost.getId());
-                navController.navigate(R.id.action_addEditPostFragment_to_homeFragment);
+                if (updateNote(currentPost.getId())) {
+                    navController.navigate(R.id.action_addEditPostFragment_to_homeFragment);
+                }
             }
         });
 

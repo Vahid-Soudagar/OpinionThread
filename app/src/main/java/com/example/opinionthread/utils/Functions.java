@@ -1,10 +1,14 @@
 package com.example.opinionthread.utils;
 
+import static java.security.AccessController.getContext;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import com.example.opinionthread.R;
 import com.example.opinionthread.models.Post;
 import java.text.SimpleDateFormat;
@@ -70,5 +74,22 @@ public class Functions {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
         String date = dateFormat.format(new Date());
         return date;
+    }
+
+    public static boolean validateForm(Context context, String title, String description, String author) {
+        if (title.isEmpty()) {
+            Toast.makeText(context, "Please Enter Post Title", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if (description.isEmpty()) {
+            Toast.makeText(context, "Please Enter Post Description", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if (author.isEmpty()) {
+            Toast.makeText(context, "Please Enter Author Name", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        return true;
     }
 }
